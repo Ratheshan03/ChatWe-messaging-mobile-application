@@ -8,28 +8,29 @@ import {
 } from "react-native";
 import { Button, Input, Image } from "@rneui/base";
 import { StatusBar } from "expo-status-bar";
-// import { auth } from "../firebase";
+import { auth } from "../firebase";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // useEffect(() => {
-  //   const unsubscribe = auth.onAuthStateChanged((authUser) => {
-  //     console.log(authUser);
-  //     if (authUser) {
-  //       navigation.navigate("Home");
-  //     }
-  //   });
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      console.log(authUser);
+      if (authUser) {
+        navigation.replace("Home");
+      }
+    });
 
-  //   return unsubscribe;
-  // }, []);
+    return unsubscribe;
+  }, []);
 
   const Login = () => {
     auth
       .signInWithEmailAndPassword(email, password)
       .catch((error) => alert(error));
   };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}

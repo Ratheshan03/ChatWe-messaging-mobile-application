@@ -2,6 +2,7 @@ import { StyleSheet, View, KeyboardAvoidingView, Platform } from "react-native";
 import { Text, Input, Button } from "@rneui/base";
 import React, { useLayoutEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
+import { auth } from "../firebase";
 
 const RegisterScreen = ({ navigation }) => {
   const [name, setName] = useState("");
@@ -10,7 +11,6 @@ const RegisterScreen = ({ navigation }) => {
   const [imageUrl, setImageUrl] = useState("");
 
   useLayoutEffect(() => {
-    // applyed for just IOS
     navigation.setOptions({
       headerBackTitle: "Back to Login",
     });
