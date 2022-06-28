@@ -2,4 +2,4 @@
 
 # REAT-NATIVE, Firebase Authentication and Database
 
-# Expo-client
+# Expo-client project
